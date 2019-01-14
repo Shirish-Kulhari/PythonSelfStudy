@@ -159,3 +159,59 @@ for i in range(10):
   x1 = 3.9*x1*(1-x1)
   x2 = 3.9*x2*(1-x2)
   print("{:^5}{:^12.6f}{:" ">11.6f}".format(i+1, x1, x2))
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 12. Write an improved version of the fulval.py program from Chapter 2. Your
+#     program will prompt the user for the amount of the investment, the
+#     annualized interest rate, and the numbers of years of the investment.
+#     The program will then output a nicely formatted table that tracks the
+#     value of the investment year by year.
+
+principal = float(input("Invested amount: "))
+rate = float(input("Rate of interest: "))
+n = int(input("Time horizon: "))
+
+print("\n{:^6}{:^9}".format("Year", "Value"))
+print("-"*15)
+
+for i in range(n+1):
+  print("{:^6}${:>8.2f}".format(i, principal*(1+rate)**i))
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 13. Redo any of the previous programming problems to make them batch-oriented.
+
+infile = open(input("Input filename: "), "r")
+outfile = open(input("Output filename: "), "w")
+key = int(input("Key: "))
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+alphabetEnc = []
+for letter in alphabet:
+  alphabetEnc.append(letter)
+    
+for letter in alphabet:
+  alphabetEnc[(alphabet.find(letter) - key)%len(alphabet)] = letter
+              
+"""
+This section is only to differentiate the last line from the rest
+All lines except the last one have a '\n' character at the end,
+which must be ignored. Since we're prohibited from using the if
+statement at this point, we have to use a roundabout way of storing
+all lines except the last (stored in infile.readlines()[:-1])
+"""          
+# Begin Section    
+listTemp = []
+for line in infile.readlines()[:-1]:
+  listTemp.append(line)
+listTemp.append(infile.readline())
+# End Section
+
+for line in listTemp:
+  listEnc = []
+  for ch in line[:-1]:
+    listEnc.append(alphabetEnc[alphabet.find(ch)])
+  print("".join(listEnc), file = outfile)
+    
+infile.close()
+outfile.close()
