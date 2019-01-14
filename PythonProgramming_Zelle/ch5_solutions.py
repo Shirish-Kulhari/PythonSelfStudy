@@ -182,8 +182,8 @@ for i in range(n+1):
 
 # 13. Redo any of the previous programming problems to make them batch-oriented.
 
-infile = open(input("Input filename: "), "r")
-outfile = open(input("Output filename: "), "w")
+infile = open(input("Input file: "), "r")
+outfile = open(input("Output file: "), "w")
 key = int(input("Key: "))
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
 alphabetEnc = []
@@ -196,22 +196,52 @@ for letter in alphabet:
 """
 This section is only to differentiate the last line from the rest
 All lines except the last one have a '\n' character at the end,
-which must be ignored. Since we're prohibited from using the if
-statement at this point, we have to use a roundabout way of storing
-all lines except the last (stored in infile.readlines()[:-1])
+which must be ignored.
 """          
 # Begin Section    
 listTemp = []
-for line in infile.readlines()[:-1]:
+for line in infile:
   listTemp.append(line)
-listTemp.append(infile.readline())
+  print(line)
+i = 0
+for item in listTemp[:-1]:
+  listTemp[i] = item[:-1]
+  i += 1
+print(listTemp)
 # End Section
 
-for line in listTemp:
+for line in listTemp[:-1]:
   listEnc = []
-  for ch in line[:-1]:
+  for ch in line:
     listEnc.append(alphabetEnc[alphabet.find(ch)])
   print("".join(listEnc), file = outfile)
-    
+
+# This section has to be included separately since
+# the last line needs to be printed without '\n' at
+# its end.
+listEnc = []
+for ch in listTemp[-1]:
+  listEnc.append(alphabetEnc[alphabet.find(ch)])
+print("".join(listEnc), file = outfile, end="")
+
 infile.close()
 outfile.close()
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 14. Write a program that accepts a file name as input and then
+#     prints three numbers showing the count of lines, words and
+#     characters in the file.
+
+infile = open(input("Input file: "), "r")
+lines = infile.readlines()
+print("No. of lines =", len(lines))
+words = chars = 0
+for line in lines:
+  for word in line.split():
+    words += 1
+    for char in word:
+      chars += 1
+
+print("No. of words = {:}\nNo. of chars = {:}".format(words, chars))
+infile.close()
