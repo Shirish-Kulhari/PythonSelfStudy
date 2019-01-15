@@ -141,16 +141,9 @@ print("Square root:", latestGuess)
 #     squareEach(nums)  nums is a list of numbers. Modifies the list
 #     by squaring each entry.
 
-numList = [1, 2, 3, 4]
-
 def squareEach(nums):
-  i = 0
-  for num in nums:
-    nums[i] = num**2
-    i += 1
-    
-squareEach(numList)
-print(numList)
+  for i in range(len(nums)):
+    nums[i] = nums[i]**2
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -158,16 +151,32 @@ print(numList)
 #     sumList(nums)  nums is a list of numbers. Returns the sum of
 #     the numbers in the list.
 
-numList = [1, 2, 13, 24, 71]
-
 def sumList(nums):
   sum = 0
   for num in nums:
     sum += num
   return sum
-    
-print(sumList(numList))
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# 13. 
+# 13. Write a function toNumbers(strList) where strList is a list of
+#     strings, each of which represents a number. The function modifies
+#     each entry in the list by converting it to a number.
+
+def toNumbers(strList):
+  for i in range(len(strList)):
+    strList[i] = float(strList[i])
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 14. Use the functions from the previous three problems to implement
+#     a program that computes the sum of the squares of numbers read
+#     from a file. Your program should prompt for a file name and
+#     print out the sum of the squares of the values in the file.
+
+infile = open(input("Input file: "), "r")
+sList = infile.readlines()
+toNumbers(sList)
+squareEach(sList)
+print("Sum of squares:", sumList(sList))
+infile.close()
