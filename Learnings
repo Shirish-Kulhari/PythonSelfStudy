@@ -1,0 +1,47 @@
+Precision and rounding errors:
+
+https://stackoverflow.com/questions/54157983/python-how-to-resolve-a-rounding-error-in-a-basic-chaos-theory-program/54158093#54158093
+
+https://stackoverflow.com/questions/21895756/why-are-floating-point-numbers-inaccurate
+
+https://stackoverflow.com/questions/1089018/why-cant-decimal-numbers-be-represented-exactly-in-binary
+
+-=-=-=-=-=-=-=-=-=-
+
+Section 3.5 of Zelle
+
+-=-=-=-=-=-=-=-=-=-
+
+eval
+
+a,b = 2,3 kind of assignment. a,b = b,a : swapping values
+
+range (start, n, step)
+
+a = (a//b)*b + (a%b)
+
+-=-=-=-=--=-=-=--=-
+
+Pg 94-95 of Zelle
+
+Strings are not mutable; lists are.
+
+-=-=-=-=-=-=-=-=-=-
+
+Assigning a precise decimal value:
+
+from decimal import Decimal
+print(Decimal(3.14))
+print(Decimal("3.14"))
+
+-=-=--=-=-=-=-=-=-=-
+
+Section 5.5.2, 5.7 of Zelle
+
+-=-=-=-=-=-=-=-=-=-=
+
+Section 6.6 of Zelle
+
+-=-=-=-=-=-=-=-=-=-=
+
+Section 7.1.3, 7.4, 7.5.2, 7.5.3, 7.5.5 of Zelle
