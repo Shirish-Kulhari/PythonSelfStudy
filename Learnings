@@ -50,3 +50,38 @@ Section 7.1.3, 7.4, 7.5.2, 7.5.3, 7.5.5 of Zelle
 
 Section 8.3.3, page 253 end paragraph, page 256 first paragraph
 Page 267-269 => very important
+
+-=-=-=-=-=-=-=-=-=-=
+
+Section 9.3, 9.4, 9.5
+
+-=-=-=-=-=-=-=-=-=-=-
+
+Like lists, class instances are also passed BY REFERENCE.
+Any change to one of their attributes inside a function persists
+outside the function as well. e.g.
+
+class abc:
+  def __init__(self, x):
+    self.x = x
+    
+def func(abcobj):
+  abcobj.x += 1
+  return abcobj.x
+
+def main():
+  sample = abc(5)
+  print(func(sample))
+  print(sample.x)
+  
+main()
+
+Section 10.5.1, 10.5.4
+
+-=-=-=-=-=-=-=-=-=-=-
+
+Page 369 list methods (compare pop to the del operation)
+Section 11.3, page 403-409 (dictionary revision)
+
+Note: dict.keys(), dict.values(), dict.items()
+
